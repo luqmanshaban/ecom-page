@@ -1,0 +1,90 @@
+
+//variables
+$button: #AB4906;
+$background: #fff;
+$text: #292829;
+$secondary: #D1894B;
+
+@mixin flex() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    width: 50%;
+    // background-color: aqua;
+    text-align: start;
+
+    h5 {
+        margin: 20px 0;
+        color: $button;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+    }
+    h1 {
+        margin-bottom: 40px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 40px;
+    }
+    p {
+        margin: 20px 0;
+        color: grey;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .price {
+        display: block;
+        
+        span {
+            @include flex();
+            gap: 20px;
+            
+            h3 {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 25px;
+            }
+            h5 {
+                font-size: 15px;
+                background-color: $secondary;
+                padding: 5px;
+                border-radius: 3px;
+            }
+        }
+
+        p {
+            text-decoration: line-through;
+            color: lighten($color: $text, $amount: 50%);
+        }
+    }
+
+    .btn {
+        @include flex();
+        gap: 30px;
+        button {
+            cursor: pointer;
+        }
+        
+        span {
+            @include flex();
+            gap: 55px;
+        }
+
+        .addToCart{
+            @include flex();
+            gap: 10px;
+            flex: 2;
+            background-color: $button;
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            width: 270px;
+        }
+    }
+}

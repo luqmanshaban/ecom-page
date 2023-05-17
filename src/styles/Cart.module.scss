@@ -1,0 +1,70 @@
+
+//variables
+$button: #AB4906;
+$background: #fff;
+$text: #292829;
+$secondary: #D1894B;
+
+@mixin flex() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.cart {
+    position: fixed;
+    background-color: $background;
+    top: 100px;
+    right: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+    height: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+    #empty {
+        padding: 70px 100px;
+        color: grey;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 10px;
+    }
+
+    .product {
+        @include flex();
+        gap: 10px;
+        margin: 10px;
+
+        .info {
+            h5 {
+                color: grey;
+                font-size: 15px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            p {
+                color: grey;
+                
+                #total {
+                    color: black;
+                }
+            }
+        }
+    }
+
+    button {
+        background-color: $button;
+        color: $background;
+        cursor: pointer;
+        font-size: 15px;
+        padding:  20px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+    }
+}

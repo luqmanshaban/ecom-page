@@ -1,0 +1,142 @@
+
+//variables
+$button: #AB4906;
+$background: #fff;
+$text: #292829;
+$secondary: #D1894B;
+
+@mixin flex($justify){
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+}
+
+.navbar {
+    @include flex(space-between);
+    gap: 50px;
+    min-height: 70px;
+    background-color: $background;
+     
+    //left Nav
+    .leftNav {
+        @include flex(space-between);
+        gap: 20px;
+
+        //hamburger
+        .logo {
+            @include flex(space-between);
+            gap: 10px;
+            .hamburger {
+                display: none;
+                cursor: pointer;
+    
+                .bar {
+                    display: block;
+                    margin: 5px;
+                    height: 3px;
+                    width: 18px;
+                    background-color: $text;
+                    -webkit-transition: 0.7s ease-in-out;
+                    transition: 0.7s ease-in-out;
+                }
+            }
+        }
+
+        img {
+            margin-right: 50px;
+        }
+
+        //navMenu
+        .navMenu {
+            @include flex(space-between);
+            gap: 50px;
+            
+            li {
+                .navLink {
+                    color: grey;
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    transition: 0.3s ease;
+                    &:hover {
+                        color: $text;
+                        text-decoration: underline 3px;
+                        text-underline-offset: 27px;
+                        text-decoration-color: #D1894B;
+                    }
+                }
+            }
+        }
+    }
+
+    //right Nav
+    .rightNav {
+        @include flex(space-between);
+        gap: 20px;
+
+       
+        //profile
+        #profile {
+           height: 50px;
+           cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .navbar {
+        .leftNav {
+
+            //hamburger
+            .logo {
+                .hamburger {
+                    display: block;
+                    z-index: 9999;
+                    &.active {
+                        .bar:nth-child(2){
+                            opacity: 0;
+                        }.bar:nth-child(1){
+                            transform: translateY(8px) rotate(45deg);
+                        }.bar:nth-child(3){
+                            transform: translateY(-8px) rotate(-45deg);
+                        }
+                    }
+                }
+            }
+
+            //navMenu
+            .navMenu {
+                position: fixed;
+                left: -200%;
+                flex-direction: column;
+                gap: 0;
+                top: -10px;
+                padding-bottom: 700px;
+                padding-top: 100px;
+                text-align: center;
+                background-color: $background;
+                width: 70%;
+                transition: 0.7s ease-in-out;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+                li {
+                    margin: 16px 0;
+
+                    .navLink {
+                        color: $text;
+                        font-weight: bold;
+                    }
+                }
+
+                &.active {
+                    left: 0;
+                }
+            }
+        }
+
+        //right nav
+        .rightNav {
+            #profile {
+                height: 30px;
+            }
+        }
+    }
+}

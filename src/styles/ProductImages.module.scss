@@ -1,0 +1,36 @@
+//variables
+$button: #AB4906;
+$background: #fff;
+$text: #292829;
+$secondary: #D1894B;
+
+@mixin flex($justify) {
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+}
+
+.productImages {
+    // width: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    //images
+    .mainImages {
+        img {
+            border-radius: 10px;
+        }
+    }
+
+    //thumnail
+    .thumnails {
+        @include flex(space-between);
+        gap: 32px;
+
+        img {
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+}
