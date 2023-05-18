@@ -1,7 +1,7 @@
 {
   "name": "ecom-page",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/ecom-page",
+  "homepage": "https://luqmanshaban.github.io/ecom-page",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.0",
