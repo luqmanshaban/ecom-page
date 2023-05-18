@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from 'react';
-import styles from '../styles/ProductImages.module.scss'
-//images
+import styles from '../styles/ProductImages.module.scss';
+import ArrowRightIcon from '@mui/icons-material/ChevronRight';
+import ArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+// images
 import image1 from '../images/image-product-1.jpg';
 import image2 from '../images/image-product-2.jpg';
 import image3 from '../images/image-product-3.jpg';
@@ -11,36 +14,79 @@ import thumb3 from '../images/image-product-3-thumbnail.jpg';
 import thumb4 from '../images/image-product-4-thumbnail.jpg';
 
 const ProductImages = () => {
-    //keep track of the current rendered image
-    //The default image is image 1
-    const [selectedImage, setSelectedImage] = useState('image1')
+  const [selectedImage, setSelectedImage] = useState('image1');
 
-    //Reneders the image that corresponds the clicked thumnail
-    const ImageClick = product => setSelectedImage(product)
+  const images = {
+    image1: image1,
+    image2: image2,
+    image3: image3,
+    image4: image4,
+  };
 
-    //style the thumnail when it's corresponding image is rendered
-    const blurSelectedImage = product =>  selectedImage === product ? {filter: 'blur(4px)'} : {}
+  const thumbnails = {
+    image1: thumb1,
+    image2: thumb2,
+    image3: thumb3,
+    image4: thumb4,
+  };
+
+  const imageKeys = Object.keys(images);
+  const currentIndex = imageKeys.findIndex((key) => key === selectedImage);
+
+  const handleClickNext = () => {
+    const nextIndex = (currentIndex + 1) % imageKeys.length;
+    setSelectedImage(imageKeys[nextIndex]);
+  };
+
+  const handleClickPrevious = () => {
+    const previousIndex = (currentIndex - 1 + imageKeys.length) % imageKeys.length;
+    setSelectedImage(imageKeys[previousIndex]);
+  };
+
+  const ImageClick = (product) => setSelectedImage(product);
+
+  const blurSelectedImage = (product) =>
+    selectedImage === product ? { filter: 'blur(4px)' } : {};
 
   return (
     <div className={styles.productImages}>
-        {/* This code snippet renders the truthy image only */}
-        <section className={styles.mainImages}>
-           {selectedImage === 'image1' && <img src={image1} alt='image1' height={500} />} 
-           {selectedImage === 'image2' && <img src={image2} alt='image2' height={500} />} 
-           {selectedImage === 'image3' && <img src={image3} alt='image3' height={500} />} 
-           {selectedImage === 'image4' && <img src={image4} alt='image4' height={500} />} 
-        </section>
+      {/* Main images */}
+      <section className={styles.mainImages}>
+        {Object.keys(images).map((key) => (
+          selectedImage === key && (
+            <img
+              key={key}
+              src={images[key]}
+              alt={`image${key}`}
+              height={500}
+            />
+          )
+        ))}
+      </section>
 
-         {/* This code snippet renders the thumnails */}
-        <section className={styles.thumnails}>
-           <img src={thumb1} alt='thumnail1' height={100} style={blurSelectedImage('image1')} onClick={() => ImageClick('image1')} />
-   
-           <img src={thumb2} alt='thumnail2' height={100} style={blurSelectedImage('image2')} onClick={() => ImageClick('image2')}/>
-           
-           <img src={thumb3} alt='thumnail3' height={100} style={blurSelectedImage('image3')} onClick={() => ImageClick('image3')}/>
-           
-           <img src={thumb4} alt='thumnail4' height={100} style={blurSelectedImage('image4')} onClick={() => ImageClick('image4')}/>
-        </section>
+      {/* Thumbnails */}
+      <section className={styles.thumbnails}>
+        {Object.keys(thumbnails).map((key) => (
+          <img
+            key={key}
+            src={thumbnails[key]}
+            alt={`thumbnail${key}`}
+            height={100}
+            style={blurSelectedImage(key)}
+            onClick={() => ImageClick(key)}
+          />
+        ))}
+      </section>
+
+      {/* Arrow icons */}
+      <section className={styles.icons}>
+        <span id={styles.leftIcon} onClick={handleClickPrevious}>
+          <ArrowLeftIcon />
+        </span>
+        <span id={styles.rightIcon} onClick={handleClickNext}>
+          <ArrowRightIcon />
+        </span>
+      </section>
     </div>
   );
 };

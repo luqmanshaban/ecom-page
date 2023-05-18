@@ -72,6 +72,15 @@ $secondary: #D1894B;
         @include flex(space-between);
         gap: 20px;
 
+        .cart {
+            #count {
+                position: relative;
+                top: -15px;
+                color: $button;
+                font-weight: bold;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+        }
        
         //profile
         #profile {
@@ -83,6 +92,10 @@ $secondary: #D1894B;
 
 @media screen and (max-width: 800px) {
     .navbar {
+
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
         .leftNav {
 
             //hamburger
@@ -136,6 +149,25 @@ $secondary: #D1894B;
         .rightNav {
             #profile {
                 height: 30px;
+            }
+        }
+    }
+    hr {
+        display: none;
+    }
+
+    .rightNav {
+        align-items: center !important;
+        .cart{
+            #icon {
+                position: relative;
+                top: 10px;
+            }
+            #count {
+                top: -30px !important;
+                right: -20px;
+                font-size: 14px;
+                font-weight: lighter !important;
             }
         }
     }

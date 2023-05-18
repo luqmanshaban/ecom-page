@@ -58,9 +58,9 @@ const Navbar = ({updateCart, remove}) => {
         </ul>
         <ul className={styles.rightNav}>
             <li className={styles.cart}>
-                <ShoppingCart onClick={toggleCart} sx={{cursor: 'pointer'}}/>
-                <span>{updateCart}</span>
-                {cartIsActive && <Cart clearCart={remove}/>}
+                <ShoppingCart onClick={toggleCart} sx={{cursor: 'pointer'}} id={styles.icon}/>
+                <span id={styles.count}>{updateCart}</span>
+                {cartIsActive && <Cart cartCount={updateCart} clearCart={remove}/>}
             </li>
             <li>
                 <img id={styles.profile} src={profilePice} alt="profile" />

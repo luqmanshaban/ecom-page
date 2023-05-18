@@ -52,6 +52,9 @@ $secondary: #D1894B;
                 
                 #total {
                     color: black;
+                    font-weight: bold;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    margin-left: 10px;
                 }
             }
         }
@@ -66,5 +69,23 @@ $secondary: #D1894B;
         margin: 10px;
         border: none;
         border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .cart {
+        top: 90px;
+        right: 10px;
+        border-radius: 10px;
+        width: 350px;
+        height: 300px;
+
+        hr {
+            display: block;
+        }
+
+        #empty {
+            padding: 70px 130px;
+        }
     }
 }

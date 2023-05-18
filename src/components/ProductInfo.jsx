@@ -26,7 +26,7 @@ const ProductInfo = ({addToCart}) => {
   }
   //add item to cart
   const addItemToCart = () =>{
-    addToCart();
+    addToCart(count);
   }
   
   return (

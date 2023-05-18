@@ -8,13 +8,11 @@ function App() {
   const [numberOfCartItems, setNumberOfCartItems] = useState(0)
 
   //add to cart
-  const addToCart = () => {
-    setNumberOfCartItems(prev => prev + 1)
-  }
+  const addToCart = (count) => setNumberOfCartItems(prev => prev + count)
+  
   //remove from cart
-  const removeFromCart = () => {
-    setNumberOfCartItems(0)
-  }
+  const removeFromCart = () => setNumberOfCartItems(0)
+  
   return (
     <div className="App">
       <header>

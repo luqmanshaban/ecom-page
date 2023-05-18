@@ -3,12 +3,13 @@ import styles from '../styles/Cart.module.scss'
 import image from '../images/image-product-1-thumbnail.jpg'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-const Cart = ({clearCart}) => {
-    const [empty, setEmpty] = useState(true)
+const Cart = ({ cartCount,clearCart}) => {
+    const [empty, setEmpty] = useState(cartCount);
+    const total = 125.00;
 
     const emptyCart = () => {
         clearCart();
-        setEmpty(!empty)
+        setEmpty(0)
     }
 
   
@@ -16,11 +17,11 @@ const Cart = ({clearCart}) => {
     <section className={styles.cart}>
         <h1>Cart</h1>
         <hr />
-        {empty ? empty && <><article className={styles.product}>
+        {empty !== 0 ? empty && <><article className={styles.product}>
             <img src={image} alt="product" height={50}/>
             <figure className={styles.info}>
                 <h5>Fall Limited Edition Sneakers</h5>
-                <p>$125.00 x <span></span> <span id={styles.total}></span></p> 
+                <p>$125.00 x <span>{cartCount}</span><span id={styles.total}>${total * cartCount}</span></p> 
             </figure>
             <DeleteForeverIcon sx={{color: 'grey', cursor: 'pointer'}} onClick={emptyCart}/>
             <br />

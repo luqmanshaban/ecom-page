@@ -10,3 +10,10 @@ $secondary: #D1894B;
     justify-content: space-between;
     text-align: start;
 }
+
+@media screen and (max-width: 800px) {
+    .product {
+        flex-direction: column;
+        margin-top: 0px ;
+    }
+}
